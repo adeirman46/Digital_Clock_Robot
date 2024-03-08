@@ -14,5 +14,4 @@ void loop() {
     Serial.println("vibration not detected");
   }
   delay(100);
-
 }
