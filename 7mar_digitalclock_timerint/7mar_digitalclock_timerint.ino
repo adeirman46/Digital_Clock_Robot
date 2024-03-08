@@ -8,22 +8,6 @@ ISR(TIMER1_COMPA_vect) {
 
   // Increment seconds
   second_++;
-  if (second_ >= 60) {
-    second_ = 0;
-    minute_++;
-    if (minute_ >= 60) {
-      minute_ = 0;
-      hour_++;
-      if (hour_ >= 24) {
-        hour_ = 0;
-      }
-    }
-  }
-  Serial.print(hour_);
-  Serial.print(":");
-  Serial.print(minute_);
-  Serial.print(":");
-  Serial.println(second_);
 }
 
 void set_time(int hour, int minute, int second) {
@@ -67,4 +51,20 @@ void setup() {
 
 void loop() {
   // Print time
+  if (second_ >= 60) {
+  second_ = 0;
+  minute_++;
+  if (minute_ >= 60) {
+    minute_ = 0;
+    hour_++;
+    if (hour_ >= 24) {
+      hour_ = 0;
+      }
+    }
+  }
+  Serial.print(hour_);
+  Serial.print(":");
+  Serial.print(minute_);
+  Serial.print(":");
+  Serial.println(second_);
 }
