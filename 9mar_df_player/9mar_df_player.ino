@@ -7,12 +7,12 @@ void setup (){
   serial.begin (9600);  
   mp3_set_serial (serial);          //Instruksi untuk memulai komunikasi serial
   delay(5); 
-  mp3_set_volume (5);           //Instruksi untuk mengatur volume musik
+  mp3_set_volume (25);           //Instruksi untuk mengatur volume musik
   delay(1000);
 }
  
 void loop (){  
-  mp3_play(1);                         //Instruksi untuk memutar lagu 1
+  mp3_play(2);                         //Instruksi untuk memutar lagu 1
   delay(240000);                      //Memutar lagu selama 4 menit
   // mp3_next();
   // mp3_play(2);                         //Instruksi untuk memutar lagu 2
