@@ -34,6 +34,7 @@ void setup()
     }
   }
   Serial.println(F("DFPlayer Mini online."));
+  myDFPlayer.volume(15);  //Set volume value. From 0 to 30
   // setting mp3 end
 
   // setting vibration sensor
@@ -41,7 +42,7 @@ void setup()
 
   pinMode(touch_pin, INPUT);
 
-  myDFPlayer.volume(15);  //Set volume value. From 0 to 30
+
 
 }
 
