@@ -5,6 +5,10 @@
 DFRobotDFPlayerMini myDFPlayer;
 void printDetail(uint8_t type, int value);
 const int vibration_sensor_pin = 13;
+const int touch_pin = 12;
+
+int last_touch_state = LOW;
+int current_touch_state;
 
 void setup()
 {
@@ -35,6 +39,8 @@ void setup()
   // setting vibration sensor
   pinMode(vibration_sensor_pin, INPUT);
 
+  pinMode(touch_pin, INPUT);
+
   myDFPlayer.volume(15);  //Set volume value. From 0 to 30
 
 }
@@ -43,11 +49,23 @@ void loop()
 {
   if (digitalRead(vibration_sensor_pin)) {
     Serial.println("vibration detected");
-    myDFPlayer.play(3);  //Play the first mp3
+    myDFPlayer.play(3); 
+    delay(3000);
+    myDFPlayer.stop();
   }
   else {
     Serial.println("vibration not detected");
   }
+
+  current_touch_state = digitalRead(touch_pin);
+  if (last_touch_state == LOW &&  current_touch_state == HIGH) {
+    Serial.println("The sensor is touched");
+    myDFPlayer.play(4); 
+    delay(3000);
+    myDFPlayer.stop();
+  }
+  last_touch_state = current_touch_state;
+
   delay(100);
   
 }
